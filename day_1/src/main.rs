@@ -1,6 +1,8 @@
 use std::num::ParseIntError;
+use std::time::{Duration, Instant};
 
 fn main() {
+    let start = Instant::now();
 
     let contents = std::fs::read_to_string("input.txt").unwrap();
 
@@ -15,6 +17,10 @@ fn main() {
             _ => {},
         }
     }
+
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 
 fn day_one(input: &String) {
