@@ -43,9 +43,9 @@ fn day_two(input: &String) {
             Ok(cal) => tmp_cal_sum += cal,
             Err(_) => {
                 if thicc_elves[0] < tmp_cal_sum {
-                    thicc_elves[0] = tmp_cal_sum
+                    thicc_elves[0] = tmp_cal_sum;
+                    thicc_elves.sort();
                 }
-                thicc_elves.sort();
                 tmp_cal_sum = 0;
             }
         };
