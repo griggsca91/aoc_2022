@@ -35,25 +35,21 @@ fn day_one(input: &String) {
 }
 
 fn day_two(input: &String) {
-    let mut thicc_elves = vec![0, 0, 0];
+    let mut thicc_elves = [0, 0, 0];
 
     let mut tmp_cal_sum = 0;
     for line in input.split("\n") {
         match line.parse::<i32>() {
             Ok(cal) => tmp_cal_sum += cal,
             Err(_) => {
-                let smallest_max_cal = thicc_elves.pop().unwrap();
-                if smallest_max_cal < tmp_cal_sum {
-                    thicc_elves.push(tmp_cal_sum);
-                } else {
-                    thicc_elves.push(smallest_max_cal);
+                if thicc_elves[0] < tmp_cal_sum {
+                    thicc_elves[0] = tmp_cal_sum
                 }
-                thicc_elves.sort_by(|a, b| b.cmp(a));
+                thicc_elves.sort();
                 tmp_cal_sum = 0;
             }
         };
     }
-
     println!("Day 2: max calories {:?}", thicc_elves.iter().sum::<i32>());
 }
 
